@@ -1,56 +1,123 @@
 # WeShop - Mini Amazon
 
-## Description
 
-This server can be linked with two other servers to simulate an online shopping center in the real world. In this project, you can play the role of both sellers and customers. All requests are integrated with the warehouse and UPS to ensure efficient delivery. The functionalities include:
 
-### User Roles:
+---
 
-Sellers: Can list products, manage inventory, and process orders.
-Customers: Can browse products, add items to their cart, and place orders.
+# Project Overview
 
-### Product Management:
+## Shopping Cart
+On our product page, we offer a seamless shopping experience that allows users to effortlessly add products to their cart. Once an item is added, users will be automatically redirected to the cart page where all the product details are displayed. Additionally, a concise summary of your selections is conveniently provided on the right side of the page for easy review.
 
-Listing Products: Sellers can add new products with details such as name, description, price, and images.
-Inventory Management: Sellers can update stock levels and receive notifications for low stock.
-Product Search: Customers can search for products by category, name, or other filters.
+![Shopping Cart View](img/6491713845967_.pic.jpg)
 
-### Order Management:
+![Another Cart View](img/6531713846316_.pic.jpg)
 
-Cart System: Customers can add items to their cart and proceed to checkout.
-Order Placement: Customers can place orders, choose delivery options, and make payments.
-Order Tracking: Customers can track the status of their orders in real-time.
+### Out of Stock Products
+If a product is out of stock (stock count is 0), the option to add it to your cart will be disabled.
 
-### Warehouse Integration:
+![Out of Stock](img/WechatIMG639.jpeg)
 
-Stock Updates: Automated synchronization of stock levels between the warehouse and the online system.
-Order Fulfillment: Warehouse receives order details for picking, packing, and shipping.
+### Product Uploading
+If a product is still uploading (we still wait for the "purchasemore" response from the world), the option to add it to your cart will be disabled and shown as "product uploading".
 
-### UPS Integration:
+![Product Uploading](img/uploading.png)
 
-Shipping Calculation: Automatic calculation of shipping costs based on the delivery address and package weight.
-Shipping Labels: Generation of shipping labels for each order.
-Delivery Tracking: Real-time tracking information provided to customers through their account.
+![Detailed Cart View](img/6441713845447_.pic.jpg)
 
-### User Accounts:
+We also support adding multiple products and increasing the quantity of each item in the cart. Additionally, users have the option to remove products from the cart whenever necessary.
 
-Registration and Login: Secure user authentication for both sellers and customers.
-Profile Management: Users can update their personal information, addresses, and payment methods.
+![Manage Cart](img/6201713827469_.pic.jpg)
 
-### Notifications:
+The summary card displays the total price of your cart, including the delivery fee. For orders over $100, the delivery fee is waived. For all other orders, a delivery fee of $3.99 applies.
 
-Shipping Updates: Customers receive notifications about shipping status and delivery estimates.
-Promotional Offers: Sellers can send promotional emails and offers to customers.
+![Summary Card](img/6371713831104_.pic.jpg)
 
-### Payment Processing:
+Clicking the "Check Out" button will take users to the checkout page. If the cart is empty, a message stating "Nothing in cart, add now" will appear, and users will be redirected to the products page to browse and add items.
 
-Secure Payments: Integration with payment gateways for secure transactions.
+## Check Out Page
 
-By integrating these functionalities, the system provides a comprehensive simulation of an online shopping center, ensuring a seamless experience for both sellers and customers.
+![Checkout Page](img/6211713827484_.pic.jpg)
 
-## Demo
+![Payment Information](img/6221713827492_.pic.jpg)
 
-TBD by JingxuanLi
+On the checkout page, users can conveniently input their delivery and payment information. On the right side of the page, they'll find a summary displaying the products in the cart along with the total price.
+
+## Track Order
+
+We offer an order detail page where users can view their order specifics and track the status of their order in real time.
+
+![Track Order](img/6121713826708_.pic.jpg)
+
+## Recommend Products Related to Order
+
+At the bottom of the order detail page, users will find our "Recommend for You" section. This feature suggests similar products related to the items in their order, offering users the convenience of adding these recommended products directly to their cart.
+
+![Recommend Products](img/6571713846799_.pic.jpg)
+
+## Seller Home Section
+
+In our website, we allow users to register as sellers and upload their own products. Users can enter their seller name to register as a seller and start sharing their products with the world.
+
+![Seller Home](img/6251713827778_.pic.jpg)
+
+![Upload New Products](img/6261713827801_.pic.jpg)
+
+After registration, they will be redirected to the seller's homepage where users can access two key features: manage products and upload new products.
+
+### Upload Products and Product Pictures
+
+On the 'Upload Products' page, sellers can list their items by entering product details such as type, name, stock levels, price, warehouse ID, and a description. **Sellers can upload their product pictures.** Once submitted, these products will appear on the main products page, ready for customers to purchase.
+
+![Upload Page](img/6521713846294_.pic.jpg)
+
+### Manage Products
+
+After upload, sellers can see their products on the manage products page.
+
+![Manage Products](img/6511713846190_.pic.jpg)
+
+## Search Function
+
+Each page features a navbar with a search function, allowing users to easily find products by keyword. Upon clicking the search button, they will be directed to the products page, which displays all relevant search results.
+
+![Search Function](img/WechatIMG623.jpeg)
+
+![Search Results](img/6501713846124_.pic.jpg)
+
+## Menu Sidebar
+
+Each page includes a sidebar that enables users to quickly navigate to specific product categories. After selecting a category and pressing the search button, users will be redirected to a products page that displays items exclusively from the chosen category.
+
+![Menu Sidebar](img/WechatIMG614.jpeg)
+
+![Category Selection](img/WechatIMG615.jpeg)
+
+## Homepage
+
+Our website homepage uses a sliding window design and provides multiple entry points for users to quickly access the pages they want to visit.
+
+![Homepage View](img/6641714073692_.pic.jpg)
+
+![Another Homepage View](img/6651714073703_.pic.jpg)
+
+![Further Homepage View](img/6661714073714_.pic.jpg)
+
+## Login and Sign Up Page
+
+We also feature functions for logging in, logging out, and signing up. If a user is not logged in, the homepage will display as described below, with a link that directs to a login page as outlined below:
+
+![Login Page](img/6721714103638_.pic.jpg)
+
+![Sign Up Page](img/6701714103594_.pic.jpg)
+
+If you don't have an account, simply click "Sign Up Now" to be directed to the sign-up page. There, the information you provide will be verified: the email must be in the correct format, the username must be unique, and the password must contain at least 8 characters.
+
+![Sign Up Details](img/6711714103604_.pic.jpg)
+
+If you are already logged in, the homepage will display your username, and a logout button will be available to allow you to easily log out.
+
+![Logged In View](img/6691714103585_.pic.jpg)
 
 ## Usage Instruction
 
