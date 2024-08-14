@@ -1,10 +1,5 @@
 # WeShop - Mini Amazon
-
-
-
----
-
-# Project Overview
+Welcome to our e-commerce platform, a dynamic web-based solution designed to provide a seamless shopping and selling experience for users and merchants alike. Our system incorporates a range of functionalities to manage product listings, handle transactions, and track orders efficiently.
 
 ## Shopping Cart
 On our product page, we offer a seamless shopping experience that allows users to effortlessly add products to their cart. Once an item is added, users will be automatically redirected to the cart page where all the product details are displayed. Additionally, a concise summary of your selections is conveniently provided on the right side of the page for easy review.
