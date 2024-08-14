@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+  
+<div class="container">
+  <hr class="featurette-divider" style = "margin-top: 40px;">
+  
+  <div class="card">
+    <div class="card-header text-center">
+      <a href="/seller/home">
+        <button type="botton" style = "margin-top: 10px;"class="btn btn-secondary">Back to home</button>
+      </a>
+        <h5 style = "margin-left: 10px; margin-top: 15px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5"/>
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+          </svg>
+            Upload my products
+        </h5>
+    </div>
+    
+  <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" enctype="multipart/form-data" method="post" novalidate>
+      {% csrf_token %}
+      <!-- {% for field in form %}
+          {{field.label}}: {{field}}
+      {% endfor %} -->
+      <div class="mb-3 mt-3">
+        <label class="form-label">Product name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter product name" name="name" value = "{{form.name.value|default_if_none:''}}">
+        <span style ="color: red;">{{form.name.errors}}</span>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Product type</label>
+        <select class="form-control" id="type" name="types" required>
+            <option value="" disabled selected>--- Please Select ---</option>
+            <option value="phone" {% if form.types.value == "phone" %}selected{% endif %}>Phone</option>
+            <option value="laptop" {% if form.types.value == "laptop" %}selected{% endif %}>Laptop</option>
+            <option value="bag" {% if form.types.value == "bag" %}selected{% endif %}>Bag</option>
+            <option value="food" {% if form.types.value == "food" %}selected{% endif %}>Food</option>
+            <option value="home" {% if form.types.value == "home" %}selected{% endif %}>Home</option>
+            <option value="beauty" {% if form.types.value == "beauty" %}selected{% endif %}>Beauty</option>
+            <option value="toys" {% if form.types.value == "toys" %}selected{% endif %}>Toys</option>
+            <option value="clothes" {% if form.types.value == "clothes" %}selected{% endif %}>Clothes</option>
+        </select>
+        <span style="color: red;">{{ form.types.errors }}</span>
+    </div>
+    
+      <div class="mb-3">
+          <label class="form-label">Product stock</label>
+          <input type="int" class="form-control" id="num" placeholder="Enter number of products" name="stock" value = "{{form.stock.value|default_if_none:''}}">
+          <span style ="color: red;">{{form.stock.errors}}</span>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Product price</label>
+        <input type="float" class="form-control" id="price" placeholder="Enter product price" name="price" value = "{{form.price.value|default_if_none:''}}">
+        <span style ="color: red;">{{form.price.errors}}</span>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Warehouse ID</label>
+      <input type="int" class="form-control" id="num" placeholder="Choose your warehouse id" name="warehouse_id" value = "{{form.warehouse_id.value|default_if_none:''}}">
+      <span style ="color: red;">{{form.warehouse_id.errors}}</span>
+  </div>
+
+      <div class="input-group">
+        <label for="exampleInputText1" class="form-label">Product description</label>
+        <div class="input-group mb-3"></div>
+        <span class="input-group-text" style = "margin-bottom: 20px;">Enter product description</span>
+        <input type="text" class="form-control" value = "{{ob.special_info}}"name = "description" style = "margin-bottom: 20px;" aria-label="With textarea" value = "{{form.description.value|default_if_none:''}}"></input>
+        <span style ="color: red;">{{form.description.errors}}</span>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Product Image</label>
+        <input type="file" name="image" class="form-control">
+        <span style="color: red;">{{ form.image.errors }}</span>
+    </div>
+      <button type="submit" class="btn btn-primary">Upload product</button>
+    </form>
+    <!-- <a href="/users/home">
+    <button type="botton" style = "margin-top: 10px;"class="btn btn-secondary position-absolute top-180 start-50">Back to home</button></a> -->
+
+{% endblock%}

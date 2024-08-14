@@ -1,0 +1,15 @@
+Danger log:
+
+1. Multiple sockets: Managing multiple sockets can be tricky, especially when handling different types of connections. One approach is to use a multiplexing mechanism, select() in our server code to efficiently handle multiple connections. These functions allow us to monitor multiple sockets for activity and give responses properly.
+
+2. Back-end and Front-end separation: Back-end and Front-end Separation: It is the first time for us to separate the front-end and back-end functions. We achieve this separation by using Django as the front-end. However, the back-end cannot be finely split, so Django also take some functions and most of the back-end functions are done by Python. 
+
+3. Sequence number problem: To handle the segment loss, we have to check the acks with sequence numbers after receiving them. Leaving them unchecked may lead to serious consequences.
+
+4. Multiple Threads: Multi-threading adds complexity to our project, but it's necessary for handling concurrent tasks efficiently and giving responses accordingly without blocking.
+
+5. Testing: Testing can be demanding due to the difficulty of considering all possible issues, and there may be unforeseen situations. For instance, we encountered the unexpected collapse of sequence numbers resulting from unanticipated network conditions or data processing errors.
+
+6. Collaboration with UPS: Collaboration can be challenging, especially in larger projects with multiple team members.
+
+7. Docker: We found it hard to compose several things in one docker according to a specific order. Inspired by the provided dockerfile, we tried to use wait-for-it.sh, and however, sleep() works better than wait-for-it.sh.

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+<div class="container">
+{% for item in allset %}
+
+<div class="card mb-3">
+    <h5 class="card-header">Order ID: #{{item.id}}</h5>
+    <div class="card-body">
+      <p class="card-title">Total price: {{item.price}}</p>
+      {% if item.status == "delivered"%}
+      <p class="card-text">Order Status: <button type="button" class="btn btn-success btn-sm">{{item.status}}</button></p>
+      {% else %}
+      <p class="card-text">Order Status: <button type="button" class="btn btn-secondary btn-sm">{{item.status}}</button></p>
+      {%endif%}
+      <a href="/order/{{item.id}}/info" class="btn btn-light">View Order detail</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock%}

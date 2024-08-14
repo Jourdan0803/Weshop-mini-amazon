@@ -1,0 +1,75 @@
+syntax = "proto2";
+
+message ConnectWorldId{
+   required int32 world_id = 1;
+   required int64 seq_num = 2;
+}
+
+message RequestTruck{
+    required int64 seq_num = 1;
+    required int32 warehouse_id = 2;
+    required int32 warehouse_x=3;
+    required int32 warehouse_y=4;
+    required int32 dest_x = 5; //destination
+    required int32 dest_y = 6; //destination
+    required int64 ship_id = 7;
+    optional UPSOrder ups_order = 8;
+}
+
+message UPSOrder{
+   required string UPSuserId = 1;
+   repeated Product product = 2; 
+}
+ 
+message Product{
+   required int64 productId = 1;
+   required int64 productCount = 2;
+   required string productDescription = 3;
+}
+ 
+ 
+message TruckArrived{
+   required int64 seq_num = 1;
+   required int64 ship_id = 2;
+   required int32 truck_id = 3;
+}
+
+message DeliverPackage{
+   required int64 seq_num = 1;
+   required int64 ship_id = 2;
+}
+
+message U2ADelivered{
+   required int64 seq_num = 1;
+   required int64 ship_id = 2;
+}
+
+message FinalDest{
+   required int64 seq_num = 1;
+   required int64 ship_id = 2;
+   required int32 dest_x = 3;
+   required int32 dest_y = 4;
+}
+
+
+message AtoUCommands{
+   repeated RequestTruck truckReqs = 1;
+   repeated DeliverPackage delivReqs = 2;
+   repeated int64 acks = 3;
+   repeated Err error = 4;
+}
+
+message UtoACommands{
+   repeated TruckArrived arrived = 1;
+   repeated U2ADelivered delivered = 2;
+   repeated Err error = 3;
+   repeated int64 acks = 4;
+   repeated FinalDest dest = 5;
+}
+
+
+message Err{
+   required string err = 1;
+   required int64 originseqnum = 2;
+   required int64 seqnum = 3;
+}

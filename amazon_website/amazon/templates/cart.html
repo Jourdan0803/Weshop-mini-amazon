@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+<div class="container">
+<div class="row">
+    <!-- Left side (cards) -->
+    <div class="col-md-8">
+        {% for p in allset %}
+        <div class="card mb-3" style="max-width: 840px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{p.product_name.image.url}}" width="230" height="230" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.product_name.name }}</h5>
+                        <p class="card-text"><small class="text-body-secondary">Saler: {{ p.product_name.saler.name }}</small></p>
+                        <p class="card-text"><small class="text-body-secondary">Product description: {{ p.product_name.description }}</small></p>
+                        <p class="card-text"><small class="text-body-secondary">Price: ${{ p.product_name.price }}</small></p>
+                        <p class="card-text"><small class="text-body-secondary">Quantity: {{ p.quantity }}</small></p>
+                        <a href="{% url 'delete_cart' p.id %}">
+                            <button type="button" class="btn btn-secondary">Delete</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Right side (image) -->
+    <div class="col-md-4">
+        <div class="card">
+            <h5 class="card-header">Summary</h5>
+            <div class="card-body">
+              <h5 class="card-title">Cart Overview</h5>
+              <p class="card-text"><small class="text-body-secondary">Products price = ${{sum}}</small></p>
+              {%if deliver == 0%}
+              <p class="card-text"><small class="text-body-secondary">Delivery price = $ {{deliver}}(order more than 100, deliver for free)</small></p>
+              {%else%}
+              <p class="card-text"><small class="text-body-secondary">Delivery price = $ {{deliver}}</small></p>
+              {%endif%}
+              <p class="card-text">Total price = ${{total}}</p>
+              {%if allset %}
+              <a href="/checkout" class="btn btn-warning">Check out!</a>
+              {%else%}
+              <a href="/products" class="btn btn-secondary">Nothing in cart,add now</a>
+              {%endif%}
+            </div>
+          </div>
+    </div>
+</div>
+</div>
+{% endblock%}

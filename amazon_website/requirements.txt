@@ -1,0 +1,5 @@
+Django>3.0
+psycopg2
+Pillow
+protobuf==3.20.0
+psycopg2

@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+
+<hr class="featurette-divider">
+<div class="container marketing">
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/static/img/10.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption text-body-emphasis d-none d-md-block text-start fw-bold" style=" color: black;">
+          <h1 class = "text-body-emphasis fw-bold">Start a wonderful shopping with WeShop!</h1>
+          <p>Check now and enjoy free delivery for order over $100!.</p>
+          <a href="/products">
+            <button class="btn btn-dark btn-primary" type="button">View products
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+              </svg>
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/9.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption text-body-emphasis d-none d-md-block fw-bold  text-start"start style=" color: rgb(246, 243, 243);">
+          <h1><span class="badge text-bg-light">Start your own business with WeShop!</span></h1>
+          <p class = "color: rgb(246, 243, 243);">Register as a shop owner and upload your products</p>
+          <a href="/seller/auth">
+            <button class="btn btn-dark btn-primary" type="button">Register now!
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+              </svg>
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/11.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption text-body-emphasis d-none d-md-block fw-bold  text-end" style=" color: rgb(253, 251, 251);">
+          <h1 class = "text-body-emphasis fw-bold">Ready to Checkout? Your Future Favorites Await!</h1>
+          <p class = "fw-bold">Complete your purchase now and enjoy exclusive benefits. Secure your items today!</p>
+          <a href="/cart">
+            <button class="btn btn-dark btn-primary" type="button">Check out now!
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+              </svg>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <hr class="featurette-divider">
+  <h2>TREND</h2>
+  <div class="card-group">
+    <div class="card">
+      <img src="/static/img/8.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Explore woman bags</h5>
+        <p class="card-text">Designer handbags for spring</p>
+        <a href="{% url 'product_search' %}?q=bag">
+        <button type="button" class="btn btn-primary btn-lg">Explore
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+        </svg>
+        </button></a>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/static/img/7.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Explore fresh foods</h5>
+        <p class="card-text">We provide healthy and organic food.</p>
+        <a href="{% url 'product_search' %}?q=food">
+          <button type="button" class="btn btn-primary btn-lg">Explore
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+          </svg>
+          </button></a>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/static/img/6.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Explore home products</h5>
+        <p class="card-text">Decorate your home now</p>
+        <a href="{% url 'product_search' %}?q=home">
+          <button type="button" class="btn btn-primary btn-lg">Explore
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+          </svg>
+          </button></a>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+{% endblock%}

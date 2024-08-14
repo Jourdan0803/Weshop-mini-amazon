@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+<div class="container  ">
+<div class="row row-cols-4 row-cols-md-4 g-4">
+    {% for p in allset %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+    <img src="{{p.image.url}}" width="50" height="250" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{p.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{p.saler.name}}</h6>
+        <p class="card-text">{{p.description}}.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Price:${{p.price}}</li>
+        <li class="list-group-item">Remaining Stock: {{p.stock}}</li>
+      </ul>
+      <div class="card-body">
+        <!-- <a href="#" class="btn btn-primary">View Details</a> -->
+        <!-- <a href="/{{obj.id}}/cart"> -->
+
+      </div>
+      
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+
+
+{% endblock%}

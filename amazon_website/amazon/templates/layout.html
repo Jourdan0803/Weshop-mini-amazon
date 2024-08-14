@@ -1,0 +1,196 @@
+
+{% load static %} 
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-5.3.2/dist/css/bootstrap.css' %}">
+  
+
+  <!-- start of header -->
+  <main>
+    <header>
+      <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <!-- Navbar content -->
+        <ul class="nav me-auto ">
+          <a href="/products">
+            <button class="btn btn-dark rounded-pill px-3" style = "margin-left: 200px;margin-right: 5px" type="button" >              
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
+              </svg>
+              <span style = "margin-left: 5px;margin-right: 5px; ">Free shipping for order over $100</span>
+            </button>
+          </a>
+          <a href="/seller/auth">
+            <button class="btn btn-dark rounded-pill px-3" style = "margin-left: 200px;margin-right: 5px" type="button" >              
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+              </svg>
+              <span style = "margin-left: 5px;margin-right: 5px; ">Join Amazon seller home today for free</span>
+            </button>
+          </a></ul>
+      </nav>
+      
+
+        
+        <div class="px-3 py-2 border-bottom mb-3">
+            <div class="d-flex flex-wrap container  align-items-center">
+              <ul class="nav me-auto">
+                <li class="nav-item"><a href="/home" class="nav-link link-body-emphasis px-2">
+                  <img src="/static/img/logo.png" type = "button" width="50" height="50" class="d-block w-100" alt="..."></a></li>
+              </ul>
+              <form class="w-50 me-5" role="search" action="{% url 'product_search' %}" method="get">
+                <div class="input-group">
+                  <input type="search" name = "q" class="form-control" placeholder="Search..." aria-label="Search">
+                    <button type="submit" class="btn btn-dark">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+                {% if username == "hi!log in or sign up" %}
+                <a href="/login">
+                  <button class="btn btn-light rounded-pill px-3" type="button">              
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                    <span style = "margin-left: 5px;margin-right: 5px; ">{{username}}</span>
+                  </button>
+                </a>
+                {% else %}
+                <a href="/home">
+                  <button class="btn btn-light rounded-pill px-3" type="button">              
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                    <span style = "margin-left: 5px;margin-right: 5px; ">{{username}}</span>
+                  </button>
+                </a>
+                {% endif %}
+                <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="/cart" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"/>
+              </svg>
+              <small class="d-lg-none ms-2">shopping cart</small>
+            </a>
+          </li>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="/orders" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-truck-front-fill" viewBox="0 0 16 16">
+                <path d="M3.5 0A2.5 2.5 0 0 0 1 2.5v9c0 .818.393 1.544 1 2v2a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V14h6v1.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-2c.607-.456 1-1.182 1-2v-9A2.5 2.5 0 0 0 12.5 0zM3 3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3.9c0 .625-.562 1.092-1.17.994C10.925 7.747 9.208 7.5 8 7.5s-2.925.247-3.83.394A1.008 1.008 0 0 1 3 6.9zm1 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2m8 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2m-5-2h2a1 1 0 1 1 0 2H7a1 1 0 1 1 0-2"/>
+              </svg><small class="d-lg-none ms-2">track your order</small>
+            </a>
+          </li>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://opencollective.com/bootstrap" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+              </svg>
+              <small class="d-lg-none ms-2">love list</small>
+            </a>
+          </li>
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+            <hr class="d-lg-none my-2 text-white-50">
+          </li>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+    
+<!-- <div class="container d-flex "> -->
+  
+    <nav class="px-3 py-2 border-bottom mb-3 d-flex">
+      <div class="d-flex flex-wrap container">
+        <ul class="nav me-auto">
+          <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+            </svg>
+            menu
+          </button>
+          <li class="nav-item"><a href="/home" class="nav-link link-body-emphasis px-2 active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="/products" class="nav-link link-body-emphasis px-2">Products</a></li>
+          <li class="nav-item"><a href="/seller/auth" class="nav-link link-body-emphasis px-2">Seller home</a></li>
+          <li class="nav-item"><a href="/orders" class="nav-link link-body-emphasis px-2">Track my orders</a></li>
+          <li class="nav-item"><a href="/cart" class="nav-link link-body-emphasis px-2">View my cart</a></li>
+          </ul>
+          <ul class="nav">
+            <li class="nav-item"><a href="/logout" class="nav-link link-body-emphasis px-2">log out</output></a></li>
+        </ul>
+
+      </div>
+    </nav>
+<!-- end of header -->
+<div class="offcanvas offcanvas-start align-items-center " tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+  <div class="offcanvas-header ">
+    <ul class="nav flex-column align-items-center">
+      <li><img src="/static/img/logo.png" type = "button" width="50" height="70" class="d-block w-100" alt="..."></li>
+      <li><h5 class="offcanvas-title" id="sidebarLabel">Product Types</h5></li>
+   </ul>
+      
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" style="color: black;font-size: 24px;" href="{% url 'product_search' %}?q=Phone">Phone</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" style="color: black;font-size: 24px;" href="{% url 'product_search' %}?q=Laptop">Laptop</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"style="color: black;font-size: 24px;" href="{% url 'product_search' %}?q=bag">Woman bag</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: black;font-size: 24px;" href="{% url 'product_search' %}?q=Food">Food</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: black;font-size: 24px;" href="{% url 'product_search' %}?q=Home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color: black;font-size: 24px;" href="{% url 'product_search' %}?q=Beauty">Beauty</a>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: black;font-size: 24px;" href="{% url 'product_search' %}?q=Toys">Toys</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color: black;font-size: 24px;" href="{% url 'product_search' %}?q=Clothes">Clothes</a>
+  </li>
+    </ul>
+</div>
+</div>
+
+<!-- **************************** add content here ******************************** -->
+<div>
+  {% block content%}{% endblock %}
+</div>
+<!-- **************************** add content here ******************************** -->
+  
+    <!-- FOOTER -->
+    <footer class="container">
+      <p class="float-end"><a href="#">Back to top</a></p>
+    </footer>
+  </main>
+
+
+    <script src="{% static '/plugins/bootstrap-5.3.2/dist/js/bootstrap.min.js'%}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="{% static '/plugins/bootstrap-5.3.2/dist/js/bootstrap.bundle.min.js'%}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

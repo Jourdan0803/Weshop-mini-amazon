@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+<div class="container  ">
+<div class="row row-cols-4 row-cols-md-4 g-4">
+    {% for p in allset %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+    <img src="{{p.image.url}}" width="50" height="250" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{p.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{p.saler.name}}</h6>
+        <p class="card-text">{{p.description}}.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Price:${{p.price}}</li>
+        <li class="list-group-item">Remaining Stock: {{p.stock}}</li>
+      </ul>
+      <div class="card-body">
+        <!-- <a href="/{{obj.id}}/cart"> -->
+          {% if p.uploading == 0 %}
+              {% if p.stock > 0 %}
+              <a href="{% url 'add-to-cart' p.id %}" >
+              <button type="button" class="btn btn-warning ">Add to cart
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                </svg>
+              </button>
+            </a>
+            {% else %}
+            <button type="button" class="btn btn-secondary ">Out of stock
+            </button>
+            {% endif %}
+          {% else %}
+          <button type="button" class="btn btn-secondary ">Product uploading
+          </button>
+          {% endif %}
+      </div>
+      
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+
+
+{% endblock%}

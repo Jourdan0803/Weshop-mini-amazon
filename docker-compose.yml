@@ -1,0 +1,72 @@
+version: '3.3'
+
+services:
+  mydb:
+      image: postgres:12-alpine3.15
+      environment:
+        POSTGRES_PASSWORD: abc123
+        POSTGRES_USER: postgres
+        POSTGRES_DB: worldSim
+      restart: always
+  server:
+      build: ./worldSim
+      command: bash -c "./wait-for-it.sh mydb:5432 --strict -- ./server 12345 23456 0"
+      ports:
+        - "12345:12345"
+        - "23456:23456"
+      depends_on:
+        - mydb
+  db:
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: miniAmazon
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: passw0rd
+  web-init:
+      build: ./amazon_website
+      command: /code/initserver.sh
+      volumes:
+        - ./amazon_website:/code
+      depends_on:
+        - db
+  web:
+      build: ./amazon_website
+      ports:
+       - "8000:8000"
+       - "34521:34521"
+       - "9008:9008"
+      user: root
+      # command: /code/runserver.sh
+      volumes:
+        - ./amazon_website:/code
+      expose:
+        - "8000"
+        - "34521"
+        - "9008"
+      depends_on:
+        - web-init
+      command: ["./run_amazon.sh"]
+  nginx:
+     image: nginx:latest
+     volumes:
+       - ./nginx/config:/etc/nginx/conf.d
+     depends_on:
+       - web
+
+  # backend:
+  #     build: ./backend
+  #     ports:
+  #       - "9008:9008"
+  #     user: root
+  #     volumes:
+  #       - .:/backend
+  #     depends_on: 
+  #       - web
+  #       - server
+  #     # command: >
+  #     #   /bin/bash -c "./wait-for-it.sh -t 0 web:34521 -- python3 test.py"
+volumes:
+   data-volume:
+

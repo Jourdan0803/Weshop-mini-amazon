@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+<h1 class="visually-hidden">Heroes examples</h1>
+
+<div class="px-4 py-5 my-5 text-center">
+  <img class="d-block mx-auto mb-4" src="\static/img/1.jpg" alt="" width="200" height="200">
+  <h1 class="display-5 fw-bold text-body-emphasis">Welcome to WeShop</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">  Expand Your Horizons with WeShop — Start Your Online Selling Journey Today!</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label  class="form-label">Enter your seller name</label>
+              <input type="text" name = "seller" class="form-control" aria-describedby="emailHelp">
+              <div class="form-text">become a seller by enter your seller name and update your products</div>
+            </div>
+                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3"> Join seller home</button>
+          </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock%}

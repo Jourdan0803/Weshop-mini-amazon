@@ -1,0 +1,267 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+
+<!-- 引入Bootstrap CSS -->
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+<!-- 引入FontAwesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+<style>
+    .step-indicator {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    .step {
+        text-align: center;
+        position: relative;
+        flex-grow: 1;
+    }
+    .step .step-icon {
+        background: #dee2e6;
+        border-radius: 50%;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin-bottom: 5px;
+        color: white;
+        z-index: 1;
+    }
+    .step.active .step-icon {
+        background-color: #0058AB; /* Bootstrap primary color */
+        z-index: 1;
+    }
+    .step.done .step-icon {
+        background-color: #079748; /* Bootstrap primary color */
+        z-index: 1;
+    }
+    .step-text {
+        font-size: 0.9rem;
+        display: block;
+    }
+    .product-scrolling-wrapper {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px 0;
+}
+
+.product-card {
+    display: inline-block;
+    width: 350px; /* 或其他适当的宽度 */
+    margin-right: 15px;
+    flex: 0 0 auto;
+}
+</style>
+
+
+<div class="container">
+  <article class="card">
+    <!-- <div class="py-5 text-center"> -->
+      <h2 class="py-3 text-center"> Order Details</h2>
+    <!-- </div> -->
+      <div class="card-body">
+          <h6 class="py-3 text-center">Order ID: #{{order.id}}</h6>
+          <article class="card mx-3 text-center">
+              <div class="card-body row">
+                  <div class="col"> <strong>Total Price:</strong> <br>{{order.price}} </div>
+                  <div class="col"> <strong>Shipping BY:</strong> <br> UPS</div>
+                  <div class="col"> <strong>Status:</strong> <br> {{order.status}} </div>
+                  <div class="col"> <strong>Address_x:</strong> <br> {{order.dest_x}} </div>
+                  <div class="col"> <strong>Address_y:</strong> <br> {{order.dest_y}} </div>
+              </div>
+          </article>
+<div class="container mt-5">
+    <ul class="step-indicator">
+      {% if order.status == 'packing' %}
+        <li class="step active">
+            <div class="step-icon"><i class="fa fa-check"></i></div>
+            <span class="step-text">Order confirmed</span>
+        </li>
+        <li class="step">
+            <div class="step-icon"><i class="fa fa-user"></i></div>
+            <span class="step-text">Picked by courier</span>
+        </li>
+        <li class="step">
+            <div class="step-icon"><i class="fa fa-truck"></i></div>
+            <span class="step-text">On the way</span>
+        </li>
+        <li class="step">
+            <div class="step-icon"><i class="fa fa-box"></i></div>
+            <span class="step-text">Ready for pickup</span>
+        </li>
+        {% elif order.status == 'packed'%}
+        <li class="step active">
+            <div class="step-icon"><i class="fa fa-check"></i></div>
+            <span class="step-text">Order confirmed</span>
+        </li>
+        <li class="step active">
+            <div class="step-icon"><i class="fa fa-user"></i></div>
+            <span class="step-text">Picked by courier</span>
+        </li>
+        <li class="step">
+            <div class="step-icon"><i class="fa fa-truck"></i></div>
+            <span class="step-text">On the way</span>
+        </li>
+        <li class="step">
+            <div class="step-icon"><i class="fa fa-box"></i></div>
+            <span class="step-text">Ready for pickup</span>
+        </li>
+        {% elif order.status == 'delivering'%}
+        <li class="step active">
+            <div class="step-icon"><i class="fa fa-check"></i></div>
+            <span class="step-text">Order confirmed</span>
+        </li>
+        <li class="step active">
+            <div class="step-icon"><i class="fa fa-user"></i></div>
+            <span class="step-text">Picked by courier</span>
+        </li>
+        <li class="step active">
+            <div class="step-icon"><i class="fa fa-truck"></i></div>
+            <span class="step-text">On the way</span>
+        </li>
+        <li class="step">
+            <div class="step-icon"><i class="fa fa-box"></i></div>
+            <span class="step-text">Ready for pickup</span>
+        </li>
+        {% elif order.status == 'delivered' %}
+        <li class="step done">
+            <div class="step-icon"><i class="fa fa-check"></i></div>
+            <span class="step-text">Order confirmed</span>
+        </li>
+        <li class="step done">
+            <div class="step-icon"><i class="fa fa-user"></i></div>
+            <span class="step-text">Picked by courier</span>
+        </li>
+        <li class="step done">
+            <div class="step-icon"><i class="fa fa-truck"></i></div>
+            <span class="step-text">On the way</span>
+        </li>
+        <li class="step done">
+            <div class="step-icon"><i class="fa fa-box"></i></div>
+            <span class="step-text">Ready for pickup</span>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+          <hr>
+          
+          <ul class="row">
+
+            <!-- <div class="album py-5 bg-body-tertiary"> -->
+            <h2 class = "text-center">Products</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+                  {% for p in allset %}
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <img src="{{p.product_id.image.url}}" width="250" height="250" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 class="card-title">{{ p.product_id.name }}</h5>
+                              <p class="card-text"><small class="text-body-secondary">Saler: {{ p.product_id.saler.name }}</small></p>
+                              <p class="card-text"><small class="text-body-secondary">Product description: {{ p.product_id.description }}</small></p>
+                              <p class="card-text"><small class="text-body-secondary">Quantity: {{ p.quantity }}</small></p>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+          </ul>
+          <hr>
+          
+          <!-- <ul class="row">
+
+            <h5 class = "text-center">Recommand for you</h5>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+                  {% for p in products %}
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <img src="/static/img/1.jpg" width="250" height="250" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <div class="col-md-11">
+                          <div class="card-body">
+                              <h5 class="card-title">{{ p.name }}</h5>
+                              <p class="card-text"><small class="text-body-secondary">Saler: {{ p.saler.name }}</small></p>
+                              <p class="card-text"><small class="text-body-secondary">Product description: {{ p.description }}</small></p>
+                                <p class="card-text">Price:${{p.price}}</p>
+                                <p class="card-text">Remaining Stock: {{p.stock}}</p>
+                          </div>
+                          <div class="card-body">
+                              {% if p.stock > 0 %}
+                              <a href="{% url 'add-to-cart' p.id %}" >
+                              <button type="button" class="btn btn-warning ">Add to cart
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                                  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                                </svg>
+                              </button>
+                            </a>
+                            {% else %}
+                            <button type="button" class="btn btn-secondary ">Out of stock
+                            </button>
+                            {% endif %}
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+              </div>
+
+          </ul> -->
+          <div class="container mt-3">
+            <h5 class="text-center fw-bold">Recommend for you</h5>
+            <hr>
+            <div class="product-scrolling-wrapper">
+                {% for p in products %}
+                <div class="card product-card">
+                    <img src="{{p.image.url}}" width="350" height="300" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.name }}</h5>
+                        <p class="card-text"><small class="text-muted">Saler: {{ p.saler.name }}</small></p>
+                        <p class="card-text"><small class="text-muted">Product description: {{ p.description }}</small></p>
+                        <p class="card-text"><small class="text-muted">Type: {{ p.types }}</small></p>
+                        <p class="card-text">Price: ${{ p.price }}</p>
+                        <p class="card-text">Remaining Stock: {{ p.stock }}</p>
+                        {% if p.uploading == 0 %}
+                        {% if p.stock > 0 %}
+                        <a href="{% url 'add-to-cart' p.id %}" >
+                        <button type="button" class="btn btn-warning ">Add to cart
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                          </svg>
+                        </button>
+                      </a>
+                      {% else %}
+                      <button type="button" class="btn btn-secondary ">Out of stock
+                      </button>
+                      {% endif %}
+                    {% else %}
+                    <button type="button" class="btn btn-secondary ">Product uploading
+                    </button>
+                    {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+          <hr>
+          <a href="/orders" class="btn btn-primary" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+      </div>
+  </article>
+</div>
+
+
+
+
+{% endblock%}
